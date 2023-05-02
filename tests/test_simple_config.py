@@ -53,7 +53,7 @@ def test_simple_config():
 
     # try `dict` interface
     print(*config)
-    print(dict(**config))
+    print({**config})
 
     # value assignment by mapping
     # TODO: MAYBE this should raise an errorby the value check.

@@ -98,8 +98,7 @@ def safe_issubclass(cls, classinfo) -> bool:
         r = issubclass(cls, classinfo)
     except Exception:  # pylint: disable=broad-except
         return cls is classinfo
-    else:
-        return r
+    return r
 
 
 def _coqpit_json_default(obj: Any) -> str:
@@ -697,7 +696,7 @@ class Coqpit(Serializable, MutableMapping):
             for key in new.keys():
                 __conditional_set(key)
         else:
-            for key, value in new:
+            for key, _ in new:
                 __conditional_set(key)
 
     def pprint(self) -> None:
@@ -820,8 +819,7 @@ class Coqpit(Serializable, MutableMapping):
             try:
                 rgetattr(self, k)
             except (TypeError, AttributeError) as e:
-                raise Exception(f" [!] '{k}' not exist to override from argparse.") from e
-
+                raise Exception(f" [!] '{k}' not exist to override from argparse.") from e  # pylint: disable=broad-exception-raised
             rsetattr(self, k, v)
 
         self.check_values()

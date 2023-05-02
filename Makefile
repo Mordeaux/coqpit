@@ -20,4 +20,7 @@ lint:	## run pylint linter.
 install:	## install 👩‍✈️ Coqpit for development.
 	pip install -e .
 
-testlint: test lint
+typecheck:
+	mypy ${target_dirs}
+
+testlint: test lint typecheck
