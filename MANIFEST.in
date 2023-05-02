@@ -2,6 +2,7 @@ include VERSION
 include README.md
 include LICENSE.txt
 include requirements*.txt
+include coqpit/py.typed
 recursive-include coqpit *.json
 recursive-include coqpit *.html
 recursive-include coqpit *.png
